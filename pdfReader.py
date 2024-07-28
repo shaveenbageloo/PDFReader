@@ -3,10 +3,9 @@ import pandas as pd
 
 # Function to extract text from each page of the PDF
 def extract_text_from_pdf(pdf_path):
-    pdf_reader = PyPDF2.PdfFileReader(pdf_path)
+    pdf_reader = PyPDF2.PdfReader(pdf_path)
     text = ""
-    for page_num in range(pdf_reader.getNumPages()):
-        page = pdf_reader.getPage(page_num)
+    for page in pdf_reader.pages:
         text += page.extract_text() + "\n"
     return text
 
@@ -31,6 +30,11 @@ def extract_pdf_to_csv(pdf_path, csv_path):
     save_rows_to_csv(rows, csv_path)
 
 # Example usage
-pdf_path = 'path_to_your_pdf_file.pdf'
+pdf_path='/Users/shaveenbageloo/Downloads/Certificate of Attendance JaWs.pdf'
 csv_path = 'output.csv'
 extract_pdf_to_csv(pdf_path, csv_path)
+
+
+
+
+
